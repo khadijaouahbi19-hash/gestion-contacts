@@ -1,0 +1,69 @@
+<!-- formulaire-contact.component.html -->
+<div class="formulaire-wrapper">
+  <h2>{{ titre }} <span class="badge">{{ version }}</span></h2>
+
+  <!-- ── Exercice 2A : Interpolation ───────────────────────────── -->
+  <section>
+    <h3>📝 Interpolation</h3>
+    <p>Bonjour <strong>{{ prenom }}</strong> !</p>
+    <p>Note sur 20 : {{ note }} / 20</p>
+    <p>Prénom en majuscules : {{ prenom.toUpperCase() }}</p>
+    <p>Réussite : {{ note >= 10 ? '✅ Admis' : '❌ Refusé' }}</p>
+    <p>Nombre de notes : {{ notes.length }}</p>
+    <p>Date : {{ dateAujourdhui }}</p>
+  </section>
+
+  <!-- ── Exercice 2B : Property Binding ────────────────────────── -->
+  <section>
+    <h3>🔗 Property Binding</h3>
+    <img [src]="imageUrl" [alt]="'Photo de ' + prenom" width="200" style="border-radius:6px;">
+    <br>
+    <button [disabled]="!boutonActif" style="margin-top:8px;">Bouton contrôlé (désactivé)</button>
+    <p [style.fontSize.px]="tailleTexte">Ce texte a une taille dynamique de {{ tailleTexte }}px</p>
+    <div [class]="classeCSS">Bloc avec classe CSS dynamique : {{ classeCSS }}</div>
+  </section>
+
+  <!-- ── Exercice 2C : Event Binding ───────────────────────────── -->
+  <section>
+    <h3>⚡ Event Binding</h3>
+    <button (click)="decrementer()">−</button>
+    <span style="margin:0 12px;font-size:1.2rem;font-weight:bold;">{{ compteur }}</span>
+    <button (click)="incrementer()">+</button>
+    <button (click)="reinitialiser()" style="background:#888;">Reset</button>
+
+    <br><br>
+    <button (click)="changerCouleur('rouge')" style="background:#e53935;">Rouge</button>
+    <button (click)="changerCouleur('bleu')"  style="background:#1e88e5;">Bleu</button>
+    <button (click)="changerCouleur('vert')"  style="background:#43a047;">Vert</button>
+    <p>Couleur choisie : <strong>{{ couleurBouton }}</strong></p>
+
+    <input (keyup)="onFrappe($event)" placeholder="Tapez quelque chose...">
+    <p>Vous écrivez : <em>{{ texteInput }}</em></p>
+  </section>
+
+  <!-- ── Exercice 2D : Two-Way Binding ─────────────────────────── -->
+  <section>
+    <h3>🔄 Two-Way Binding — Aperçu en temps réel</h3>
+    <input [(ngModel)]="nom"       placeholder="Nom complet *">
+    <input [(ngModel)]="email"     type="email" placeholder="Adresse email *">
+    <input [(ngModel)]="telephone" placeholder="Téléphone">
+    <input [(ngModel)]="age"       type="number" placeholder="Âge">
+
+    <div class="apercu">
+      <h4>Aperçu :</h4>
+      <p><strong>{{ nom }}</strong></p>
+      <p>{{ email }} | {{ telephone }}</p>
+      <p>Age : {{ age }} ans</p>
+      <p *ngIf="nom.length > 0">
+        Bonjour <strong>{{ nom }}</strong>, votre saisie est en cours !
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Exercice 3 : Ajouter un contact via @Output ───────────── -->
+  <section>
+    <h3>➕ Ajouter un Contact</h3>
+    <p *ngIf="nom" class="apercu-mini"><strong>Aperçu :</strong> {{ nom }} — {{ email }}</p>
+    <button (click)="sauvegarder()">➕ Ajouter le contact</button>
+  </section>
+</div>

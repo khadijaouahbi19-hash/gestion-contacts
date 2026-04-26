@@ -1,0 +1,12 @@
+/* formulaire-contact.component.css */
+.formulaire-wrapper { max-width: 600px; }
+.badge {
+  font-size: 0.65rem; background: #DD0031; color: white;
+  padding: 2px 8px; border-radius: 12px; vertical-align: middle;
+}
+.alerte-info {
+  background: #E3F2FD; border-left: 4px solid #1E88E5;
+  padding: 8px 12px; border-radius: 4px;
+}
+.apercu { background: #EDE7F6; padding: 10px; border-radius: 4px; margin-top: 10px; }
+.apercu-mini { background: #FFF9C4; padding: 8px; border-radius: 4px; }
